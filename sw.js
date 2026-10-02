@@ -51,7 +51,7 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
       keys.map(key => {
-        if (!whitelist.includes(key)) {
+        if (!whitelist.includes(key) && key.startsWith('expovilladiego-cache-')) {
           return caches.delete(key);
         }
       })
